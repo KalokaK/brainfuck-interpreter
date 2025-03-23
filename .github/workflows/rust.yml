@@ -3,6 +3,8 @@ name: Rust
 on:
   push:
     branches: [ "master" ]
+    tags:
+      - "v*"
   pull_request:
     branches: [ "master" ]
 
@@ -27,3 +29,16 @@ jobs:
         
         # Run the input/output example from brainfuck.org
         cat src/main.rs | cargo run -- --source-file <(curl https://brainfuck.org/head.b)
+
+  release:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build release
+        run: cargo build --release
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: brainfuck-interpreter
+          path: target/release/brainfuck-interpreter
