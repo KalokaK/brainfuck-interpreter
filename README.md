@@ -23,3 +23,7 @@ Heres another example from there, testing both input and output:
 ```sh
 cat src/main.rs | cargo run -- --source-file <(curl https://brainfuck.org/head.b)
 ```
+
+## TODO
+- [ ] When parsing the source code, cache matching brackets.
+- [ ] Bevy visualisaiton of how the machine is moving with controls and IO renderer
