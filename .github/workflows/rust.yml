@@ -38,7 +38,7 @@ jobs:
       - name: Build release
         run: cargo build --release
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: brainfuck-interpreter
-          path: target/release/brainfuck-interpreter
+          path: target/release/
